@@ -152,28 +152,6 @@ GET  /api/tts/audio/:filename # Get audio file (protected)
 GET  /api/tts/history    # Get TTS history (protected)
 ```
 
-### Example API Usage
-
-**Register User:**
-```javascript
-POST /api/auth/register
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "SecurePass123"
-}
-```
-
-**Convert Text to Speech:**
-```javascript
-POST /api/tts/convert
-Headers: { "Authorization": "Bearer <jwt_token>" }
-{
-  "text": "Hello, this is a test message",
-  "language": "en"
-}
-```
-
 ## 🎨 Features Explained
 
 ### Client-Side Text-to-Speech
