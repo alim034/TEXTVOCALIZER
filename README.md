@@ -1,4 +1,4 @@
-# 🎤 TextVocalizer
+# 🎤 Voicify
 
 A production-ready MERN stack application for real-time text-to-voice conversion with user authentication and dark/light mode support.
 
@@ -289,16 +289,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**GitHub Copilot** - *AI Programming Assistant*
+**Mohammad Alim** - *MERN Stack Developer*
 
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- MongoDB for the flexible database
-- Tailwind CSS for utility-first styling
-- gTTS for server-side text-to-speech
-- Web Speech API for client-side speech synthesis
 
 ---
 
-**Made with ❤️ by GitHub Copilot in 2025**
+**Made with ❤️ by Mohammad Alim in 2025**
