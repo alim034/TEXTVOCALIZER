@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: 'SET_LOADING' });
       
       try {
-        const res = await axios.get('/api/auth/me');
+        const res = await axios.get('https://voicify-backend.onrender.com');
         
         if (res.data.success) {
           dispatch({
@@ -123,7 +123,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADING' });
     
     try {
-      const res = await axios.post('/api/auth/register', userData);
+      const res = await axios.post('https://voicify-backend.onrender.com', userData);
       
       if (res.data.success) {
         dispatch({
@@ -145,7 +145,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADING' });
     
     try {
-      const res = await axios.post('/api/auth/login', userData);
+      const res = await axios.post('https://voicify-backend.onrender.com', userData);
       
       if (res.data.success) {
         dispatch({
