@@ -1,4 +1,4 @@
-# 🎤 Voicify
+# Voicify
 
 A production-ready MERN stack application for real-time text-to-voice conversion with user authentication and dark/light mode support.
 
