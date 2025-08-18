@@ -13,8 +13,9 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+// In your backend's index.js
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5174',
+  origin: process.env.FRONTEND_URL || 'http://localhost:5174', // Use this line
   credentials: true
 }));
 
