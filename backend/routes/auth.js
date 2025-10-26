@@ -197,6 +197,18 @@ router.post('/forgot-password', [
       <p>If you did not request this, you can safely ignore this email.</p>
     `;
 
+    // If SMTP is not configured, provide a graceful dev fallback
+    const smtpConfigured = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+    if (!smtpConfigured) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('[DEV] SMTP is not configured. Logging reset URL instead:');
+        console.warn(resetUrl);
+        return res.json({ success: true, message: 'If that email exists, a reset link has been sent' });
+      }
+      // In production, surface a controlled error so ops can fix env vars
+      return res.status(500).json({ success: false, message: 'Email service is not configured on the server' });
+    }
+
     await sendEmail({ to: email, subject, html, text: `Reset your password: ${resetUrl}` });
 
     res.json({ success: true, message: 'If that email exists, a reset link has been sent' });
