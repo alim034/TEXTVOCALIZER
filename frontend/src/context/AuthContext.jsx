@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
-import axios from 'axios';
+import api, { warmUp } from '../lib/api';
 
 const AuthContext = createContext();
 
@@ -81,12 +81,12 @@ const initialState = {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Set auth token for axios
+  // Token is attached by api interceptor via localStorage
   const setAuthToken = (token) => {
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem('token', token);
     } else {
-      delete axios.defaults.headers.common['Authorization'];
+      localStorage.removeItem('token');
     }
   };
 
@@ -95,11 +95,13 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     
     if (token) {
+      // ensure token present for interceptor
       setAuthToken(token);
       dispatch({ type: 'SET_LOADING' });
       
       try {
-        const res = await axios.get('https://voicify-backend.onrender.com/api/auth/me');
+        await warmUp();
+        const res = await api.get('/api/auth/me');
         
         if (res.data.success) {
           dispatch({
@@ -123,7 +125,8 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADING' });
     
     try {
-      const res = await axios.post('https://voicify-backend.onrender.com/api/auth/register', userData);
+      await warmUp();
+      const res = await api.post('/api/auth/register', userData);
       
       if (res.data.success) {
         dispatch({
@@ -145,7 +148,8 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADING' });
     
     try {
-      const res = await axios.post('https://voicify-backend.onrender.com/api/auth/login', userData);
+      await warmUp();
+      const res = await api.post('/api/auth/login', userData);
       
       if (res.data.success) {
         dispatch({
@@ -174,7 +178,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    loadUser();
+    (async () => {
+      await warmUp().catch(() => {});
+      await loadUser();
+    })();
   }, []);
 
   const value = {
@@ -183,7 +190,8 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     loadUser,
-    clearError
+    clearError,
+    warmUp
   };
 
   return (

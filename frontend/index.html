@@ -2,7 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/frontend/public/favicon.ico" />
+  <!-- Favicon: served from Vite public/ at root -->
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/vocify-main-logo.svg" />
+  <!-- Fallback for older browsers (optional if you keep a favicon.ico in public/) -->
+  <link rel="alternate icon" href="/favicon.ico" />
+  <!-- Safari pinned tab (uses monochrome mask) -->
+  <link rel="mask-icon" href="/vocify-main-logo.svg" color="#16a34a" />
+  <!-- Theme color for some browsers -->
+  <meta name="theme-color" content="#0b0f0a" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voicify - Real Time Text To Voice Converter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">

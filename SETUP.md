@@ -44,7 +44,37 @@ JWT_SECRET=your_super_secret_jwt_key_here_make_it_long_and_random_12345_CHANGE_T
 JWT_EXPIRE=30d
 
 # Frontend URL for CORS
+# In development:
 FRONTEND_URL=http://localhost:5173
+# In production (Render/Netlify/Vercel), set this to your deployed frontend origin, e.g.:
+# FRONTEND_URL=https://your-frontend.onrender.com
+
+# SMTP Email (Required for Forgot Password)
+# Use your SMTP provider credentials (e.g., Gmail App Password, SendGrid, Mailgun, or Ethereal for testing)
+SMTP_HOST=smtp.ethereal.email
+SMTP_PORT=587
+SMTP_USER=your_smtp_username
+SMTP_PASS=your_smtp_password
+
+# Email From (optional)
+FROM_NAME=Voicify
+FROM_EMAIL=no-reply@voicify.app
+```
+
+3. Create frontend environment file (optional but recommended):
+
+```bash
+cp frontend/.env.example frontend/.env
+```
+
+Then edit `frontend/.env`:
+
+```env
+# Point the frontend to your API base URL (no trailing slash)
+# Local dev backend:
+VITE_API_URL=http://localhost:5000
+# Or your deployed backend base URL:
+# VITE_API_URL=https://your-backend.onrender.com
 ```
 
 ## Installation Steps
@@ -85,6 +115,7 @@ Run the installation script:
 3. **Access Application**:
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:5000
+   - Backend Health Check: http://localhost:5000/api/health
 
 ### Production Mode
 1. **Build Frontend**:
@@ -135,6 +166,16 @@ Run the installation script:
 - **Solution**: 
   - Check `FRONTEND_URL` in backend `.env`
   - Ensure frontend is running on the specified URL
+   - If deployed, ensure `FRONTEND_URL` matches your production origin exactly (scheme + host + port)
+
+#### Forgot Password email not received
+- **Issue**: Reset emails not arriving
+- **Solution**:
+   - Verify SMTP variables in `backend/.env` are set and correct
+   - Check server logs for `SMTP credentials are not configured` errors
+   - For Gmail, use an App Password and enable access for your app
+   - For testing, use Ethereal: create a test account at https://ethereal.email and fill HOST/USER/PASS
+   - Ensure `FRONTEND_URL` is set so reset links point to your frontend
 
 ### Environment Validation
 

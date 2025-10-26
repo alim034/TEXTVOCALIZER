@@ -14,17 +14,19 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   
-  const { login, loading, error, isAuthenticated, clearError } = useAuth();
+  const { login, loading, error, isAuthenticated, clearError, warmUp } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/dashboard';
 
   useEffect(() => {
+    // Warm backend and redirect if already logged in
+    warmUp()?.catch?.(() => {});
     if (isAuthenticated) {
       navigate(from, { replace: true });
     }
-  }, [isAuthenticated, navigate, from]);
+  }, [isAuthenticated, navigate, from, warmUp]);
 
   useEffect(() => {
     clearError();
@@ -85,9 +87,11 @@ const Login = () => {
         className="max-w-sm w-full mx-auto rounded-2xl p-8 bg-black border border-neutral-800 shadow-2xl shadow-black/20 relative z-10"
       >
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-green-500 rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg shadow-green-500/20">
-            <span className="text-3xl font-bold text-white">V</span>
-          </div>
+          <img
+            src="/vocify-main-logo.svg"
+            alt="Voicify Logo"
+            className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20"
+          />
           <h2 className="font-bold text-3xl text-white">
             Welcome Back
           </h2>

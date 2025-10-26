@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Volume2, 
   Menu, 
   X, 
   Sun, 
   Moon,
   User,
-  LogOut,
-  Settings
+  LogOut
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -60,10 +58,11 @@ const Navbar = () => {
             className="flex items-center space-x-2"
           >
             <Link to="/" className="flex items-center space-x-2 group">
-              <div className="relative p-2 rounded-xl bg-gradient-to-r from-green-400 to-green-600 shadow-lg group-hover:shadow-glow-green transition-all duration-300">
-                <Volume2 className="h-6 w-6 text-white" />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
-              </div>
+              <img
+                src="/vocify-main-logo.svg"
+                alt="Voicify Logo"
+                className="h-8 w-8 rounded-full shadow-md group-hover:shadow-glow-green transition-shadow duration-300"
+              />
               <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent dark:from-green-400 dark:to-green-600">
                 Voicify
               </span>

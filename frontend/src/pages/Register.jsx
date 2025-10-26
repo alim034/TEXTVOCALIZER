@@ -17,7 +17,7 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
   
-  const { register, loading, error, isAuthenticated, clearError } = useAuth();
+  const { register: registerUser, loading, error, isAuthenticated, clearError, warmUp } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +29,11 @@ const Register = () => {
   useEffect(() => {
     clearError();
   }, [clearError]);
+
+  // Warm backend on page mount to avoid first-submit delays
+  useEffect(() => {
+    warmUp()?.catch?.(() => {});
+  }, [warmUp]);
 
   const { name, email, password, confirmPassword } = formData;
 
@@ -64,7 +69,7 @@ const Register = () => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    const result = await register({ name: name.trim(), email: email.trim(), password });
+  const result = await registerUser({ name: name.trim(), email: email.trim(), password });
     
     if (result.success) {
       toast.success(result.message || 'Registration successful!');
@@ -87,9 +92,11 @@ const Register = () => {
         className="max-w-md w-full mx-auto rounded-2xl p-8 bg-black border border-neutral-800 shadow-2xl shadow-black/20 relative z-10"
       >
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-green-500 rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg shadow-green-500/20">
-            <span className="text-3xl font-bold text-white">V</span>
-          </div>
+          <img
+            src="/vocify-main-logo.svg"
+            alt="Voicify Logo"
+            className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20"
+          />
           <h2 className="font-bold text-3xl text-white">
             Join Voicify
           </h2>
