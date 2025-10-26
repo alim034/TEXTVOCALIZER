@@ -1,4 +1,4 @@
-# 🎤 TextVocalizer
+# Voicify
 
 A production-ready MERN stack application for real-time text-to-voice conversion with user authentication and dark/light mode support.
 
@@ -152,28 +152,6 @@ GET  /api/tts/audio/:filename # Get audio file (protected)
 GET  /api/tts/history    # Get TTS history (protected)
 ```
 
-### Example API Usage
-
-**Register User:**
-```javascript
-POST /api/auth/register
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "SecurePass123"
-}
-```
-
-**Convert Text to Speech:**
-```javascript
-POST /api/tts/convert
-Headers: { "Authorization": "Bearer <jwt_token>" }
-{
-  "text": "Hello, this is a test message",
-  "language": "en"
-}
-```
-
 ## 🎨 Features Explained
 
 ### Client-Side Text-to-Speech
@@ -289,16 +267,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**GitHub Copilot** - *AI Programming Assistant*
+**Mohammad Alim** - *MERN Stack Developer*
 
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- MongoDB for the flexible database
-- Tailwind CSS for utility-first styling
-- gTTS for server-side text-to-speech
-- Web Speech API for client-side speech synthesis
 
 ---
 
-**Made with ❤️ by GitHub Copilot in 2025**
+**Made with ❤️ by Mohammad Alim in 2025**
