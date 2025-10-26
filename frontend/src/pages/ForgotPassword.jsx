@@ -39,7 +39,7 @@ const ForgotPassword = () => {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-sm w-full mx-auto rounded-2xl p-8 bg-black border border-neutral-800 shadow-2xl shadow-black/20 relative z-10">
         <div className="text-center mb-8">
-          <img src="/vocify-main-logo.svg" alt="Voicify Logo" className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20" />
+          <img src="/vocify-main-logo.svg" alt="Voicify Logo" className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20 ring-2 ring-white ring-offset-2 ring-offset-black" />
           <h2 className="font-bold text-3xl text-white">Forgot Password</h2>
           <p className="text-neutral-400 text-sm mt-2">Enter your email and we'll send you a password reset link</p>
         </div>

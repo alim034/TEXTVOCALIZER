@@ -61,7 +61,7 @@ const Navbar = () => {
               <img
                 src="/vocify-main-logo.svg"
                 alt="Voicify Logo"
-                className="h-8 w-8 rounded-full shadow-md group-hover:shadow-glow-green transition-shadow duration-300"
+                className="h-8 w-8 rounded-full shadow-md group-hover:shadow-glow-green transition-shadow duration-300 ring-2 ring-white ring-offset-2 ring-offset-black dark:ring-white/90 dark:ring-offset-neutral-900"
               />
               <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent dark:from-green-400 dark:to-green-600">
                 Voicify

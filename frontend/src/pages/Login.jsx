@@ -90,7 +90,7 @@ const Login = () => {
           <img
             src="/vocify-main-logo.svg"
             alt="Voicify Logo"
-            className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20"
+            className="w-16 h-16 mx-auto mb-4 rounded-full shadow-lg shadow-green-500/20 ring-2 ring-white ring-offset-2 ring-offset-black"
           />
           <h2 className="font-bold text-3xl text-white">
             Welcome Back
